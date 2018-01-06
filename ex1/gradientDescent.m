@@ -16,8 +16,17 @@ for iter = 1:num_iters
     % Hint: While debugging, it can be useful to print out the values
     %       of the cost function (computeCost) and gradient here.
     %
-
-
+ good0 = 0
+ good1 = 0 
+ for n0_forXsample = 1 : m
+      good0= good0+(1/m) * (theta(1,1) + theta(2,1)*X(n0_forXsample,1) - y(n0_forXsample,1))
+ end
+ for n1_forXsample = 1 : m
+      good1= good1+(1/m) * (theta(1,1) + theta(2,1)*X(n1_forXsample,1) - y(n1_forXsample,1)) * X(n1_forXsample,1)
+ end
+ 
+ theta(1,1) = theta(1,1) - alpha *  good0  
+ theta(2,1) = theta(2,1) - alpha *  good1  
 
 
 
@@ -26,8 +35,12 @@ for iter = 1:num_iters
     % ============================================================
 
     % Save the cost J in every iteration    
-    J_history(iter) = computeCost(X, y, theta);
+    J_history(iter) = computeCost(X, y, theta)
 
 end
+
+figure ; 
+plot(J_history);
+ylabel('j HISTORY');
 
 end
