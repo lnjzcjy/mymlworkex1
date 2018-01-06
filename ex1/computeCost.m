@@ -9,6 +9,13 @@ m = length(y); % number of training examples
 % You need to return the following variables correctly 
 J = 0;
 
+
+prediction = theta'* X';
+n = 0 ;
+for i = 1:n+1 
+  J = (prediction(i) - y(i))*(prediction(i) - y(i))/2/m +J
+ end;
+%
 % ====================== YOUR CODE HERE ======================
 % Instructions: Compute the cost of a particular choice of theta
 %               You should set J to the cost.
